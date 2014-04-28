@@ -27,7 +27,7 @@ do
         if [ -n $IRQ ] ; then
                 printf "%X" $MASK > /proc/irq/$IRQ/smp_affinity
                 sleep 1
-                echo "bind $DEV($IRQ) to " `cat /proc/irq/$IRQ/smp_affinity`
+                echo "bind $DEV($IRQ) to " `printf "%X" $MASK`
                 CURCPU=$((($CURCPU + 1)%$CPUNUM))
         fi
 done
